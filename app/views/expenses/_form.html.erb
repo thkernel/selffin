@@ -1,0 +1,82 @@
+<%= form_with(model: expense, local: true) do |form| %>
+  <% if expense.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(expense.errors.count, "error") %> prohibited this expense from being saved:</h2>
+
+      <ul>
+      <% expense.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :uid %>
+    <%= form.text_field :uid %>
+  </div>
+
+  <div class="field">
+    <%= form.label :expense_category_id %>
+    <%= form.text_field :expense_category_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :reason %>
+    <%= form.text_field :reason %>
+  </div>
+
+  <div class="field">
+    <%= form.label :recipient %>
+    <%= form.text_field :recipient %>
+  </div>
+
+  <div class="field">
+    <%= form.label :document_reference %>
+    <%= form.text_field :document_reference %>
+  </div>
+
+  <div class="field">
+    <%= form.label :amount %>
+    <%= form.text_field :amount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :wallet_source %>
+    <%= form.check_box :wallet_source %>
+  </div>
+
+  <div class="field">
+    <%= form.label :wallet_id %>
+    <%= form.text_field :wallet_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bank_source %>
+    <%= form.text_field :bank_source %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bank_id %>
+    <%= form.text_field :bank_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

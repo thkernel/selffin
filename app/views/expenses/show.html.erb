@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Uid:</strong>
+  <%= @expense.uid %>
+</p>
+
+<p>
+  <strong>Expense category:</strong>
+  <%= @expense.expense_category %>
+</p>
+
+<p>
+  <strong>Reason:</strong>
+  <%= @expense.reason %>
+</p>
+
+<p>
+  <strong>Recipient:</strong>
+  <%= @expense.recipient %>
+</p>
+
+<p>
+  <strong>Document reference:</strong>
+  <%= @expense.document_reference %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @expense.amount %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @expense.description %>
+</p>
+
+<p>
+  <strong>Wallet source:</strong>
+  <%= @expense.wallet_source %>
+</p>
+
+<p>
+  <strong>Wallet:</strong>
+  <%= @expense.wallet %>
+</p>
+
+<p>
+  <strong>Bank source:</strong>
+  <%= @expense.bank_source %>
+</p>
+
+<p>
+  <strong>Bank:</strong>
+  <%= @expense.bank %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @expense.user %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @expense.status %>
+</p>
+
+<%= link_to 'Edit', edit_expense_path(@expense) %> |
+<%= link_to 'Back', expenses_path %>

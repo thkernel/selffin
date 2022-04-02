@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Bank Movements</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Uid</th>
+      <th>Movement type</th>
+      <th>Designation</th>
+      <th>Description</th>
+      <th>Source</th>
+      <th>Destination</th>
+      <th>Amount</th>
+      <th>Status</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bank_movements.each do |bank_movement| %>
+      <tr>
+        <td><%= bank_movement.uid %></td>
+        <td><%= bank_movement.movement_type %></td>
+        <td><%= bank_movement.designation %></td>
+        <td><%= bank_movement.description %></td>
+        <td><%= bank_movement.source %></td>
+        <td><%= bank_movement.destination %></td>
+        <td><%= bank_movement.amount %></td>
+        <td><%= bank_movement.status %></td>
+        <td><%= bank_movement.user %></td>
+        <td><%= link_to 'Show', bank_movement %></td>
+        <td><%= link_to 'Edit', edit_bank_movement_path(bank_movement) %></td>
+        <td><%= link_to 'Destroy', bank_movement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bank Movement', new_bank_movement_path %>

@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Uid:</strong>
+  <%= @lend.uid %>
+</p>
+
+<p>
+  <strong>Designation:</strong>
+  <%= @lend.designation %>
+</p>
+
+<p>
+  <strong>Lend date:</strong>
+  <%= @lend.lend_date %>
+</p>
+
+<p>
+  <strong>Recipient:</strong>
+  <%= @lend.recipient %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @lend.description %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @lend.amount %>
+</p>
+
+<p>
+  <strong>Repayment date:</strong>
+  <%= @lend.repayment_date %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @lend.status %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @lend.user %>
+</p>
+
+<%= link_to 'Edit', edit_lend_path(@lend) %> |
+<%= link_to 'Back', lends_path %>

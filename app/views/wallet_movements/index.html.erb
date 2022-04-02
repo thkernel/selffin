@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Wallet Movements</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Uid</th>
+      <th>Movement type</th>
+      <th>Designation</th>
+      <th>Description</th>
+      <th>Source</th>
+      <th>Destination</th>
+      <th>Amount</th>
+      <th>Status</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @wallet_movements.each do |wallet_movement| %>
+      <tr>
+        <td><%= wallet_movement.uid %></td>
+        <td><%= wallet_movement.movement_type %></td>
+        <td><%= wallet_movement.designation %></td>
+        <td><%= wallet_movement.description %></td>
+        <td><%= wallet_movement.source %></td>
+        <td><%= wallet_movement.destination %></td>
+        <td><%= wallet_movement.amount %></td>
+        <td><%= wallet_movement.status %></td>
+        <td><%= wallet_movement.user %></td>
+        <td><%= link_to 'Show', wallet_movement %></td>
+        <td><%= link_to 'Edit', edit_wallet_movement_path(wallet_movement) %></td>
+        <td><%= link_to 'Destroy', wallet_movement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Wallet Movement', new_wallet_movement_path %>

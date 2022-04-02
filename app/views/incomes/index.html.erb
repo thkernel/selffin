@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Incomes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Uid</th>
+      <th>Income type</th>
+      <th>Designation</th>
+      <th>Description</th>
+      <th>Amount</th>
+      <th>Wallet destionation</th>
+      <th>Wallet</th>
+      <th>Bank destination</th>
+      <th>Bank</th>
+      <th>Status</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @incomes.each do |income| %>
+      <tr>
+        <td><%= income.uid %></td>
+        <td><%= income.income_type %></td>
+        <td><%= income.designation %></td>
+        <td><%= income.description %></td>
+        <td><%= income.amount %></td>
+        <td><%= income.wallet_destionation %></td>
+        <td><%= income.wallet %></td>
+        <td><%= income.bank_destination %></td>
+        <td><%= income.bank %></td>
+        <td><%= income.status %></td>
+        <td><%= income.user %></td>
+        <td><%= link_to 'Show', income %></td>
+        <td><%= link_to 'Edit', edit_income_path(income) %></td>
+        <td><%= link_to 'Destroy', income, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Income', new_income_path %>

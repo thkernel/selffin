@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Income Expense Items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Uid</th>
+      <th>Income expense</th>
+      <th>Percenatge</th>
+      <th>Amount</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @income_expense_items.each do |income_expense_item| %>
+      <tr>
+        <td><%= income_expense_item.uid %></td>
+        <td><%= income_expense_item.income_expense %></td>
+        <td><%= income_expense_item.percenatge %></td>
+        <td><%= income_expense_item.amount %></td>
+        <td><%= income_expense_item.status %></td>
+        <td><%= link_to 'Show', income_expense_item %></td>
+        <td><%= link_to 'Edit', edit_income_expense_item_path(income_expense_item) %></td>
+        <td><%= link_to 'Destroy', income_expense_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Income Expense Item', new_income_expense_item_path %>

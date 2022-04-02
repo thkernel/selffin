@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Uid:</strong>
+  <%= @expense_category.uid %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @expense_category.name %>
+</p>
+
+<p>
+  <strong>Priority:</strong>
+  <%= @expense_category.priority %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @expense_category.status %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @expense_category.user %>
+</p>
+
+<%= link_to 'Edit', edit_expense_category_path(@expense_category) %> |
+<%= link_to 'Back', expense_categories_path %>

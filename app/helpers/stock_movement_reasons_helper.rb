@@ -1,2 +1,0 @@
-module StockMovementReasonsHelper
-end

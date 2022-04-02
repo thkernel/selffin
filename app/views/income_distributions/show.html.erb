@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Uid:</strong>
+  <%= @income_distribution.uid %>
+</p>
+
+<p>
+  <strong>Saving percentage:</strong>
+  <%= @income_distribution.saving_percentage %>
+</p>
+
+<p>
+  <strong>Expense percentage:</strong>
+  <%= @income_distribution.expense_percentage %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @income_distribution.status %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @income_distribution.user %>
+</p>
+
+<%= link_to 'Edit', edit_income_distribution_path(@income_distribution) %> |
+<%= link_to 'Back', income_distributions_path %>

@@ -5,12 +5,9 @@ class CreateProfiles < ActiveRecord::Migration[5.2]
       t.string :first_name
       t.string :last_name
       t.string :civility
-      t.string :profession
       t.string :address
       t.string :country
       t.string :city
-      t.string :locality
-      t.string :neighborhood
       t.string :phone
       t.text :about
       t.string :status

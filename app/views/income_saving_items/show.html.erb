@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Uid:</strong>
+  <%= @income_saving_item.uid %>
+</p>
+
+<p>
+  <strong>Income saving:</strong>
+  <%= @income_saving_item.income_saving %>
+</p>
+
+<p>
+  <strong>Percenatge:</strong>
+  <%= @income_saving_item.percenatge %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @income_saving_item.amount %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @income_saving_item.status %>
+</p>
+
+<%= link_to 'Edit', edit_income_saving_item_path(@income_saving_item) %> |
+<%= link_to 'Back', income_saving_items_path %>

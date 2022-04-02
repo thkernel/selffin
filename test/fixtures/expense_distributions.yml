@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  uid: MyString
+  expense_category: one
+  percentage: 1.5
+  status: MyString
+  user: one
+
+two:
+  uid: MyString
+  expense_category: two
+  percentage: 1.5
+  status: MyString
+  user: two

@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Uid:</strong>
+  <%= @bank_movement.uid %>
+</p>
+
+<p>
+  <strong>Movement type:</strong>
+  <%= @bank_movement.movement_type %>
+</p>
+
+<p>
+  <strong>Designation:</strong>
+  <%= @bank_movement.designation %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @bank_movement.description %>
+</p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @bank_movement.source %>
+</p>
+
+<p>
+  <strong>Destination:</strong>
+  <%= @bank_movement.destination %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @bank_movement.amount %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @bank_movement.status %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @bank_movement.user %>
+</p>
+
+<%= link_to 'Edit', edit_bank_movement_path(@bank_movement) %> |
+<%= link_to 'Back', bank_movements_path %>

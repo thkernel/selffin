@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Income Savings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Uid</th>
+      <th>Income</th>
+      <th>Status</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @income_savings.each do |income_saving| %>
+      <tr>
+        <td><%= income_saving.uid %></td>
+        <td><%= income_saving.income %></td>
+        <td><%= income_saving.status %></td>
+        <td><%= income_saving.user %></td>
+        <td><%= link_to 'Show', income_saving %></td>
+        <td><%= link_to 'Edit', edit_income_saving_path(income_saving) %></td>
+        <td><%= link_to 'Destroy', income_saving, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Income Saving', new_income_saving_path %>

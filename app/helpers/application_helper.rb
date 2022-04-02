@@ -1,7 +1,7 @@
 module ApplicationHelper
 	# Include all helpers
 	
-	include OrdersHelper
+	
     
 	
 
@@ -27,44 +27,7 @@ module ApplicationHelper
 	end
 
 
-	def current_shopping_cart
-        session[:shopping_cart]
-	end
 	
-	def cart_items_count
-		#shopping_cart = Cart.find(current_shopping_cart.id)
-		@shopping_cart.cart_items.count
-	  end
-
-	def shop_tenant?
-		if Apartment::Tenant.current == "shop"
-			true
-		else
-			false
-		end
-	end
-
-	def get_tenant_status?(subdomain)
-		tenant = Tenant.find_by(name: subdomain)
-
-		if tenant.present? #&& tenant.status == true
-			true 
-		else
-			#false
-			true #for test
-		end
-	end
-
-	def unconfirmed_order?(order)
-		
-
-		if order.status == "En attente"
-			true 
-		else
-			false
-		
-		end
-	end
 
 	
 

@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Uid:</strong>
+  <%= @income.uid %>
+</p>
+
+<p>
+  <strong>Income type:</strong>
+  <%= @income.income_type %>
+</p>
+
+<p>
+  <strong>Designation:</strong>
+  <%= @income.designation %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @income.description %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @income.amount %>
+</p>
+
+<p>
+  <strong>Wallet destionation:</strong>
+  <%= @income.wallet_destionation %>
+</p>
+
+<p>
+  <strong>Wallet:</strong>
+  <%= @income.wallet %>
+</p>
+
+<p>
+  <strong>Bank destination:</strong>
+  <%= @income.bank_destination %>
+</p>
+
+<p>
+  <strong>Bank:</strong>
+  <%= @income.bank %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @income.status %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @income.user %>
+</p>
+
+<%= link_to 'Edit', edit_income_path(@income) %> |
+<%= link_to 'Back', incomes_path %>

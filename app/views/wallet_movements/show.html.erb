@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Uid:</strong>
+  <%= @wallet_movement.uid %>
+</p>
+
+<p>
+  <strong>Movement type:</strong>
+  <%= @wallet_movement.movement_type %>
+</p>
+
+<p>
+  <strong>Designation:</strong>
+  <%= @wallet_movement.designation %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @wallet_movement.description %>
+</p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @wallet_movement.source %>
+</p>
+
+<p>
+  <strong>Destination:</strong>
+  <%= @wallet_movement.destination %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @wallet_movement.amount %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @wallet_movement.status %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @wallet_movement.user %>
+</p>
+
+<%= link_to 'Edit', edit_wallet_movement_path(@wallet_movement) %> |
+<%= link_to 'Back', wallet_movements_path %>

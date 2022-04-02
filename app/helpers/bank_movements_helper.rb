@@ -1,0 +1,2 @@
+module BankMovementsHelper
+end

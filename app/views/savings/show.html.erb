@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Uid:</strong>
+  <%= @saving.uid %>
+</p>
+
+<p>
+  <strong>Designation:</strong>
+  <%= @saving.designation %>
+</p>
+
+<p>
+  <strong>Bank:</strong>
+  <%= @saving.bank %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @saving.description %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @saving.amount %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @saving.status %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @saving.user %>
+</p>
+
+<%= link_to 'Edit', edit_saving_path(@saving) %> |
+<%= link_to 'Back', savings_path %>

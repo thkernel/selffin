@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Uid:</strong>
+  <%= @income_type.uid %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @income_type.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @income_type.description %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @income_type.status %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @income_type.user %>
+</p>
+
+<%= link_to 'Edit', edit_income_type_path(@income_type) %> |
+<%= link_to 'Back', income_types_path %>

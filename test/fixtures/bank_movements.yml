@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  uid: MyString
+  movement_type: MyString
+  designation: MyString
+  description: MyText
+  source: one
+  destination: one
+  amount: 1.5
+  status: MyString
+  user: one
+
+two:
+  uid: MyString
+  movement_type: MyString
+  designation: MyString
+  description: MyText
+  source: two
+  destination: two
+  amount: 1.5
+  status: MyString
+  user: two

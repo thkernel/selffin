@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Income Distributions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Uid</th>
+      <th>Saving percentage</th>
+      <th>Expense percentage</th>
+      <th>Status</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @income_distributions.each do |income_distribution| %>
+      <tr>
+        <td><%= income_distribution.uid %></td>
+        <td><%= income_distribution.saving_percentage %></td>
+        <td><%= income_distribution.expense_percentage %></td>
+        <td><%= income_distribution.status %></td>
+        <td><%= income_distribution.user %></td>
+        <td><%= link_to 'Show', income_distribution %></td>
+        <td><%= link_to 'Edit', edit_income_distribution_path(income_distribution) %></td>
+        <td><%= link_to 'Destroy', income_distribution, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Income Distribution', new_income_distribution_path %>

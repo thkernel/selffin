@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  uid: MyString
+  expense_category: one
+  reason: MyString
+  recipient: MyString
+  document_reference: MyString
+  amount: 1.5
+  description: MyText
+  wallet_source: false
+  wallet: one
+  bank_source: MyString
+  bank: one
+  user: one
+  status: MyString
+
+two:
+  uid: MyString
+  expense_category: two
+  reason: MyString
+  recipient: MyString
+  document_reference: MyString
+  amount: 1.5
+  description: MyText
+  wallet_source: false
+  wallet: two
+  bank_source: MyString
+  bank: two
+  user: two
+  status: MyString

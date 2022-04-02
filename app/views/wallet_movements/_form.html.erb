@@ -1,0 +1,62 @@
+<%= form_with(model: wallet_movement, local: true) do |form| %>
+  <% if wallet_movement.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(wallet_movement.errors.count, "error") %> prohibited this wallet_movement from being saved:</h2>
+
+      <ul>
+      <% wallet_movement.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :uid %>
+    <%= form.text_field :uid %>
+  </div>
+
+  <div class="field">
+    <%= form.label :movement_type %>
+    <%= form.text_field :movement_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :designation %>
+    <%= form.text_field :designation %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :source_id %>
+    <%= form.text_field :source_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :destination_id %>
+    <%= form.text_field :destination_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :amount %>
+    <%= form.text_field :amount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

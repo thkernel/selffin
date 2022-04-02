@@ -2,6 +2,24 @@ Rails.application.routes.draw do
   
  
   
+  resources :income_saving_items
+  resources :income_savings
+  resources :income_expense_items
+  resources :income_expenses
+  resources :lends
+  resources :loans
+  resources :expense_distributions
+  resources :income_distributions
+  resources :wallet_movements
+  resources :bank_movements
+  resources :savings
+  resources :income_types
+  resources :incomes
+  resources :expenses
+  resources :banks
+  resources :wallets
+  resources :expense_categories
+  resources :priorities
   get "/dashboard" => "dashboard#index", as: :dashboard
   resources :profiles do   
     get "delete" 

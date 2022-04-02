@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Uid:</strong>
+  <%= @income_expense_item.uid %>
+</p>
+
+<p>
+  <strong>Income expense:</strong>
+  <%= @income_expense_item.income_expense %>
+</p>
+
+<p>
+  <strong>Percenatge:</strong>
+  <%= @income_expense_item.percenatge %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @income_expense_item.amount %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @income_expense_item.status %>
+</p>
+
+<%= link_to 'Edit', edit_income_expense_item_path(@income_expense_item) %> |
+<%= link_to 'Back', income_expense_items_path %>
