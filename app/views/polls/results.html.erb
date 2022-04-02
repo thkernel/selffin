@@ -1,0 +1,95 @@
+
+<!-- content_for :meta_image, rails_blob_url(@poll.cover) -->
+
+<div class="container ">
+	
+	<div class="row ">
+		<div class="col-md-12">
+
+			<!-- Header -->
+			<div class="poll-header">
+				<div class="page-title-wrap">
+			  		<div class="d-flex align-items-center poll-title-price-wrap">
+						<div class="page-title">
+							<h2><%= @poll.title %></h2>
+						</div>
+					</div>
+					
+					<div class="poll-labels-wrap"> 
+						
+						<span class= "label-status label status-color-8">
+							<%= @poll.status %>
+						</span>
+
+						<span class="label-status label status-color-9">
+							<%= @poll.poll_category.name %>
+						</span>
+
+					</div> 
+
+					<div class="poll-dates mg-t-15">
+						
+						<span class="start-date">
+							<%= "Date début: #{@poll.start_date.strftime("%d/%m/%Y")} - Date fin: #{@poll.end_date.strftime("%d/%m/%Y")}" %>
+						</span>
+						
+						
+					</div>
+					
+
+			  </div>
+			  
+				
+				
+				
+				
+			</div> <!-- end header -->
+		</div>
+	</div>
+	<div class="row mg-b-20">
+		<div class="col-md-7">
+			
+
+			
+			<div class="poll-description mg-t-15">
+				<div class="card">
+					<div class="card-header">
+						<h5>Description</h5>
+					</div>
+					<div class="card-body">
+						<%= @poll.content.html_safe %>
+					</div>
+
+				</div>
+			</div>
+
+			
+			
+
+			
+
+			<div class="social-share">
+			
+				<!--  social_share_button_tag(@poll.title, url: poll_show_url(@poll), :image => rails_blob_url(@poll.cover) ,  desc: @poll.content) -->
+			</div>
+					
+		</div>
+		<div class="col-md-5">
+
+			<aside id="sidebar" class="sidebar-wrap">
+				<%= render "polls/partials/right_sidebar" %>
+				
+
+			</aside>
+		</div>
+
+	</div>
+			
+
+			
+		</div>
+	</div>
+
+
+
+</div>
