@@ -68,7 +68,8 @@ module ApplicationHelper
 
 	
 	def user_notifications
-		current_account.recipient_notifications.order(created_at: 'DESC').take(5)
+		#current_user.recipient_notifications.order(created_at: 'DESC').take(5)
+		
 	end
 
 	

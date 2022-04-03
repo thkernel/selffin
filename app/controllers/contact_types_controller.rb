@@ -1,4 +1,7 @@
 class ContactTypesController < ApplicationController
+  before_action :authenticate_user!
+  layout "dashboard"
+
   before_action :set_contact_type, only: %i[ show edit update destroy ]
 
   # GET /contact_types or /contact_types.json
@@ -21,15 +24,18 @@ class ContactTypesController < ApplicationController
 
   # POST /contact_types or /contact_types.json
   def create
-    @contact_type = ContactType.new(contact_type_params)
+    @contact_type = current_user.contact_types.build(contact_type_params)
 
     respond_to do |format|
       if @contact_type.save
+        @contact_types = ContactType.all
         format.html { redirect_to contact_type_url(@contact_type), notice: "Contact type was successfully created." }
         format.json { render :show, status: :created, location: @contact_type }
+        format.js
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @contact_type.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -38,13 +44,21 @@ class ContactTypesController < ApplicationController
   def update
     respond_to do |format|
       if @contact_type.update(contact_type_params)
+        @contact_types = ContactType.all
+
         format.html { redirect_to contact_type_url(@contact_type), notice: "Contact type was successfully updated." }
         format.json { render :show, status: :ok, location: @contact_type }
+        format.js
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @contact_type.errors, status: :unprocessable_entity }
+        format.js
       end
     end
+  end
+
+  def delete
+    @contact_type = ContactType.find_by(uid: params[:contact_type_id])
   end
 
   # DELETE /contact_types/1 or /contact_types/1.json
@@ -60,11 +74,11 @@ class ContactTypesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_contact_type
-      @contact_type = ContactType.find(params[:id])
+      @contact_type = ContactType.find_by(uid: params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def contact_type_params
-      params.require(:contact_type).permit(:uid, :name, :description, :status, :user_id)
+      params.require(:contact_type).permit(:name, :description, :status)
     end
 end

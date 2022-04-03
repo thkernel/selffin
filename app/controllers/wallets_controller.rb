@@ -1,4 +1,7 @@
 class WalletsController < ApplicationController
+  before_action :authenticate_user!
+  layout "dashboard"
+
   before_action :set_wallet, only: %i[ show edit update destroy ]
 
   # GET /wallets or /wallets.json
@@ -21,15 +24,18 @@ class WalletsController < ApplicationController
 
   # POST /wallets or /wallets.json
   def create
-    @wallet = Wallet.new(wallet_params)
+    @wallet = current_user.wallets.build(wallet_params)
 
     respond_to do |format|
       if @wallet.save
+        @wallets = Wallet.all
         format.html { redirect_to wallet_url(@wallet), notice: "Wallet was successfully created." }
         format.json { render :show, status: :created, location: @wallet }
+        format.js
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @wallet.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -38,13 +44,20 @@ class WalletsController < ApplicationController
   def update
     respond_to do |format|
       if @wallet.update(wallet_params)
+        @wallets = Wallet.all
         format.html { redirect_to wallet_url(@wallet), notice: "Wallet was successfully updated." }
         format.json { render :show, status: :ok, location: @wallet }
+        format.js
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @wallet.errors, status: :unprocessable_entity }
+        format.js
       end
     end
+  end
+
+  def delete
+    @wallet = Wallet.find_by(uid: params[:wallet_id])
   end
 
   # DELETE /wallets/1 or /wallets/1.json
@@ -60,11 +73,11 @@ class WalletsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_wallet
-      @wallet = Wallet.find(params[:id])
+      @wallet = Wallet.find_by(uid: params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def wallet_params
-      params.require(:wallet).permit(:uid, :name, :description, :status, :user_id)
+      params.require(:wallet).permit(:uid, :name, :description, :status)
     end
 end

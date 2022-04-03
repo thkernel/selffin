@@ -1,0 +1,20 @@
+<% @debt_types.each do |debt_type| %>
+  <tr>
+    
+    <td><%= debt_type.name %></td>
+    
+    <td><%= debt_type.status %></td>
+    <td>
+    <div class="action-buttons">
+        <%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'),  edit_debt_type_path(debt_type), title: "Modifier", remote: true %>
+
+
+
+
+<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), debt_type_delete_path(debt_type), remote: true, title: "Supprimer", class: "delete" %>
+</div>
+</td>
+  </tr>
+<% end %>

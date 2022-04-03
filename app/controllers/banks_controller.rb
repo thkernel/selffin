@@ -1,4 +1,7 @@
 class BanksController < ApplicationController
+  before_action :authenticate_user!
+  layout "dashboard"
+
   before_action :set_bank, only: %i[ show edit update destroy ]
 
   # GET /banks or /banks.json
@@ -21,15 +24,19 @@ class BanksController < ApplicationController
 
   # POST /banks or /banks.json
   def create
-    @bank = Bank.new(bank_params)
+    @bank = current_user.banks.build(bank_params)
 
     respond_to do |format|
       if @bank.save
+        @banks = Bank.all
+        
         format.html { redirect_to bank_url(@bank), notice: "Bank was successfully created." }
         format.json { render :show, status: :created, location: @bank }
+        format.js
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @bank.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -38,13 +45,20 @@ class BanksController < ApplicationController
   def update
     respond_to do |format|
       if @bank.update(bank_params)
+        @banks = Bank.all
         format.html { redirect_to bank_url(@bank), notice: "Bank was successfully updated." }
         format.json { render :show, status: :ok, location: @bank }
+        format.js
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @bank.errors, status: :unprocessable_entity }
+        format.js
       end
     end
+  end
+
+  def delete
+    @bank = Bank.find_by(uid: params[:bank_id])
   end
 
   # DELETE /banks/1 or /banks/1.json
@@ -60,11 +74,11 @@ class BanksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_bank
-      @bank = Bank.find(params[:id])
+      @bank = Bank.find_by(uid: params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def bank_params
-      params.require(:bank).permit(:uid, :name, :balance, :description, :status, :user_id)
+      params.require(:bank).permit(:uid, :name, :account_number, :balance, :description, :status)
     end
 end

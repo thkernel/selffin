@@ -69,6 +69,69 @@ ActiveRecord::Schema.define(version: 2022_04_02_161918) do
     t.index ["user_id"], name: "index_banks_on_user_id"
   end
 
+  create_table "contact_types", force: :cascade do |t|
+    t.string "uid"
+    t.string "name"
+    t.text "description"
+    t.string "status"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_contact_types_on_user_id"
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.string "uid"
+    t.bigint "contact_type_id"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "civility"
+    t.string "address"
+    t.string "phone_number_1"
+    t.string "phone_number_2"
+    t.string "city"
+    t.string "contry"
+    t.string "email"
+    t.string "about"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_type_id"], name: "index_contacts_on_contact_type_id"
+  end
+
+  create_table "debt_types", force: :cascade do |t|
+    t.string "uid"
+    t.string "name"
+    t.text "description"
+    t.string "status"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_debt_types_on_user_id"
+  end
+
+  create_table "debts", force: :cascade do |t|
+    t.string "uid"
+    t.bigint "debt_type_id"
+    t.date "contracted_at"
+    t.date "repayment_date"
+    t.string "designation"
+    t.boolean "is_creditor"
+    t.bigint "creditor_id"
+    t.float "amount", default: 0.0
+    t.float "interest_rate", default: 0.0
+    t.float "interest_amount", default: 0.0
+    t.float "total", default: 0.0
+    t.string "status"
+    t.text "description"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["creditor_id"], name: "index_debts_on_creditor_id"
+    t.index ["debt_type_id"], name: "index_debts_on_debt_type_id"
+    t.index ["user_id"], name: "index_debts_on_user_id"
+  end
+
   create_table "expense_categories", force: :cascade do |t|
     t.string "uid"
     t.string "name"
@@ -97,22 +160,18 @@ ActiveRecord::Schema.define(version: 2022_04_02_161918) do
     t.string "uid"
     t.bigint "expense_category_id"
     t.string "designation"
-    t.string "recipient"
+    t.boolean "is_recipient"
+    t.bigint "recipient_id"
     t.string "document_reference"
     t.float "amount", default: 0.0
     t.text "description"
-    t.boolean "wallet_source"
-    t.bigint "wallet_id"
-    t.boolean "bank_source"
-    t.bigint "bank_id"
     t.bigint "user_id"
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["bank_id"], name: "index_expenses_on_bank_id"
     t.index ["expense_category_id"], name: "index_expenses_on_expense_category_id"
+    t.index ["recipient_id"], name: "index_expenses_on_recipient_id"
     t.index ["user_id"], name: "index_expenses_on_user_id"
-    t.index ["wallet_id"], name: "index_expenses_on_wallet_id"
   end
 
   create_table "features", force: :cascade do |t|
@@ -195,52 +254,17 @@ ActiveRecord::Schema.define(version: 2022_04_02_161918) do
 
   create_table "incomes", force: :cascade do |t|
     t.string "uid"
+    t.date "income_date"
     t.bigint "income_type_id"
     t.string "designation"
     t.text "description"
     t.float "amount", default: 0.0
-    t.boolean "wallet_destionation"
-    t.bigint "wallet_id"
-    t.boolean "bank_destination"
-    t.bigint "bank_id"
     t.string "status"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["bank_id"], name: "index_incomes_on_bank_id"
     t.index ["income_type_id"], name: "index_incomes_on_income_type_id"
     t.index ["user_id"], name: "index_incomes_on_user_id"
-    t.index ["wallet_id"], name: "index_incomes_on_wallet_id"
-  end
-
-  create_table "lends", force: :cascade do |t|
-    t.string "uid"
-    t.string "designation"
-    t.date "lend_date"
-    t.string "recipient"
-    t.text "description"
-    t.float "amount", default: 0.0
-    t.date "repayment_date"
-    t.string "status"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_lends_on_user_id"
-  end
-
-  create_table "loans", force: :cascade do |t|
-    t.string "uid"
-    t.string "designation"
-    t.date "loan_date"
-    t.string "source"
-    t.text "description"
-    t.float "amount", default: 0.0
-    t.date "repayment_date"
-    t.string "status"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_loans_on_user_id"
   end
 
   create_table "permission_items", force: :cascade do |t|
@@ -377,14 +401,17 @@ ActiveRecord::Schema.define(version: 2022_04_02_161918) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bank_movements", "users"
   add_foreign_key "banks", "users"
+  add_foreign_key "contact_types", "users"
+  add_foreign_key "contacts", "contact_types"
+  add_foreign_key "debt_types", "users"
+  add_foreign_key "debts", "debt_types"
+  add_foreign_key "debts", "users"
   add_foreign_key "expense_categories", "priorities"
   add_foreign_key "expense_categories", "users"
   add_foreign_key "expense_distributions", "expense_categories"
   add_foreign_key "expense_distributions", "users"
-  add_foreign_key "expenses", "banks"
   add_foreign_key "expenses", "expense_categories"
   add_foreign_key "expenses", "users"
-  add_foreign_key "expenses", "wallets"
   add_foreign_key "income_distributions", "users"
   add_foreign_key "income_expense_items", "expense_categories"
   add_foreign_key "income_expense_items", "income_expenses"
@@ -394,12 +421,8 @@ ActiveRecord::Schema.define(version: 2022_04_02_161918) do
   add_foreign_key "income_savings", "incomes"
   add_foreign_key "income_savings", "users"
   add_foreign_key "income_types", "users"
-  add_foreign_key "incomes", "banks"
   add_foreign_key "incomes", "income_types"
   add_foreign_key "incomes", "users"
-  add_foreign_key "incomes", "wallets"
-  add_foreign_key "lends", "users"
-  add_foreign_key "loans", "users"
   add_foreign_key "permission_items", "permissions"
   add_foreign_key "permissions", "features"
   add_foreign_key "permissions", "roles"

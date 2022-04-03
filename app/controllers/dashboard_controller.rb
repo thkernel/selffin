@@ -1,6 +1,6 @@
 class DashboardController < ApplicationController
 	
-	before_action :authenticate_account!
+	before_action :authenticate_user!
 	#before_action :create_organization
 
 	layout 'dashboard'
@@ -8,15 +8,15 @@ class DashboardController < ApplicationController
 	def index
 
 		
-		@total_foods = Food.count
-		@total_customers = Customer.count
-		@total_fidelity_cards = FidelityCard.count
-		@total_orders = Order.count
+		#@total_foods = Food.count
+		#@total_customers = Customer.count
+		#@total_fidelity_cards = FidelityCard.count
+		#@total_orders = Order.count
 
-		@orders = Order.take(10)
+		#@orders = Order.take(10)
 
 
-		orders = Order.where.not(status: "Annulée")#.paginate(:page => params[:page], :per_page => 15) #if Credit.search(bank_name).present?
+		#orders = Order.where.not(status: "Annulée")#.paginate(:page => params[:page], :per_page => 15) #if Credit.search(bank_name).present?
 
     
     
@@ -25,7 +25,7 @@ class DashboardController < ApplicationController
     #@order_items = OrderItem.joins(:food)#.where(id: @orders.map(&:id))
     #@order_items = @orders.collect {|order| order.order_items}.class#.flatten
     #puts "ORDER ITEMS: #{@order_items.inspect}"
-    @order_chart = orders.unscope(:order).group('(EXTRACT(YEAR FROM created_at))').group('(EXTRACT(MONTH FROM created_at))').count
+    #@order_chart = orders.unscope(:order).group('(EXTRACT(YEAR FROM created_at))').group('(EXTRACT(MONTH FROM created_at))').count
     #@commissions_chart_pie_by_company_commission = @commissions.unscope(:order).group(:bank_name).sum(:company_commission)
 		#@total_departure_mails = DepartureMail.count
 		#@total_requests = Request.count

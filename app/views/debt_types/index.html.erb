@@ -1,35 +1,41 @@
-<p id="notice"><%= notice %></p>
+<div class="br-pageheader mg-30">
+      <nav class="breadcrumb pd-0 mg-0 tx-12">
+        
+        <span class="breadcrumb-item active"><h5>Types de dettes</h5></span>
+      </nav>
+    </div><!-- br-pageheader -->
 
-<h1>Debt Types</h1>
+<div class="br-pagebody mg-b-30">
+  <div class="br-section-wrapper">
+    <div class="headers mg-b-20">
+        <div class="left-content">
+        </div>
 
-<table>
+        <div class="text-right">
+            <%= link_to raw('<i class="fa fa-plus" aria-hidden="true"></i> Ajouter'), new_debt_type_path, class: "btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1", remote: true %>
+
+        </div>
+
+    </div>
+
+
+<table id="datatable1" class="table display responsive nowrap">
+
+
   <thead>
     <tr>
-      <th>Uid</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Status</th>
-      <th>User</th>
-      <th colspan="3"></th>
+      
+      <th>Nom</th>
+      <th>Statut</th>
+      
+      <th>Actions</th>
     </tr>
   </thead>
 
-  <tbody>
-    <% @debt_types.each do |debt_type| %>
-      <tr>
-        <td><%= debt_type.uid %></td>
-        <td><%= debt_type.name %></td>
-        <td><%= debt_type.description %></td>
-        <td><%= debt_type.status %></td>
-        <td><%= debt_type.user %></td>
-        <td><%= link_to 'Show', debt_type %></td>
-        <td><%= link_to 'Edit', edit_debt_type_path(debt_type) %></td>
-        <td><%= link_to 'Destroy', debt_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+ <tbody class="debt-types">
+    <%= render "index" %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Debt Type', new_debt_type_path %>
+</div>
+</div>
+<div id="debt-type-modal" class="c-modal modal fade" data-backdrop="static"></div>

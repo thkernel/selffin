@@ -43,7 +43,7 @@ require "capistrano/rails/migrations"
 #require "whenever/capistrano"
 require 'capistrano/rails/collection'
 require 'capistrano/puma'
-require 'capistrano/sitemap_generator'
+#require 'capistrano/sitemap_generator'
 install_plugin Capistrano::Puma  # Default puma tasks
 install_plugin Capistrano::Puma::Workers  # if you want to control the workers (in cluster mode)
 install_plugin Capistrano::Puma::Jungle # if you need the jungle tasks

@@ -2,41 +2,86 @@ Rails.application.routes.draw do
   
  
   
-  resources :contacts
-  resources :contact_types
-  resources :debts
-  resources :debt_types
+  resources :contacts do 
+    get "delete" 
+  end
+
+  resources :contact_types , path: "contact-types" do 
+    get "delete" 
+  end
+
+  resources :debts do 
+    get "delete" 
+  end
+
+  resources :debt_types, path: "debt-types" do 
+    get "delete" 
+  end
+
   resources :income_saving_items
   resources :income_savings
   resources :income_expense_items
   resources :income_expenses
-  resources :lends
-  resources :loans
+ 
   resources :expense_distributions
   resources :income_distributions
-  resources :wallet_movements
-  resources :bank_movements
-  resources :savings
-  resources :income_types
-  resources :incomes
-  resources :expenses
-  resources :banks
-  resources :wallets
-  resources :expense_categories
-  resources :priorities
+  resources :wallet_movements, path: "wallet-movements" do 
+    get "delete" 
+  end
+
+  resources :bank_movements, path: "bank-movements" do 
+    get "delete" 
+  end
+
+  resources :savings do 
+    get "delete" 
+  end
+
+  resources :income_types, path: "income-types" do 
+    get "delete" 
+  end
+
+  resources :incomes do 
+    get "delete" 
+  end
+
+  resources :expenses do 
+    get "delete" 
+  end
+
+  resources :banks do 
+    get "delete" 
+  end
+
+  resources :wallets do 
+    get "delete" 
+  end
+
+  resources :expense_categories, path: "expense-categories" do 
+    get "delete" 
+  end
+
+  resources :priorities do 
+    get "delete" 
+  end
+
   get "/dashboard" => "dashboard#index", as: :dashboard
   resources :profiles do   
     get "delete" 
   end
+
   resources :permission_items do   
     get "delete" 
   end
+
   resources :permissions do   
     get "delete" 
   end
+
   resources :features do   
     get "delete" 
   end
+
   resources :roles do   
     get "delete" 
   end
@@ -45,9 +90,7 @@ Rails.application.routes.draw do
     resources :profiles 
     get "profile/:uid" => "profiles#edit", as: :edit_account
   end
-  get "/search" => "searches#search_polls", as: :search_polls
-
-
+  
   
 
   get "/users"     => "custom_users#index", as: :all_users 

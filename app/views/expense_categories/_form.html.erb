@@ -1,42 +1,26 @@
-<%= form_with(model: expense_category, local: true) do |form| %>
-  <% if expense_category.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(expense_category.errors.count, "error") %> prohibited this expense_category from being saved:</h2>
+<%= form_with(model: expense_category, local: false) do |form| %>
+  <div class="modal-body">
+    <ul class="errors">
+    </ul>
 
-      <ul>
-      <% expense_category.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <%= form.label :name, "Nom", class: "required" %>
+          <%= form.text_field :name, class: "form-control", placeholder: "Nom", required: true %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :priority_id, "Priorité", class: "required" %>
+          <%= form.collection_select(:priority_id, @priorities, :id, :name, {prompt: "Sélectionner"}, class: "form-control ", style: "width: 100%", required: true) %>
+        </div>
+      </div>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :uid %>
-    <%= form.text_field :uid %>
+  </div><!-- modal body -->
+  <div class="modal-footer">
+    <%= link_to "Annuler", "#", class: "btn btn-secondary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1", data: {dismiss: "modal"} %>
+    <%= form.submit  class: "btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
   </div>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :priority_id %>
-    <%= form.text_field :priority_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  
 <% end %>

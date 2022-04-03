@@ -5,127 +5,30 @@
           <%= link_to  raw('<i class="fa fa-home tx-20"></i> <span class="menu-item-label">Tableau de bord</span>'), dashboard_path, class: "br-menu-link #{current? "active", dashboard_path}" %>
         </li><!-- br-menu-item -->
 
-        
 
-         
-      <li class="br-menu-item">
-          <a href="#" class="br-menu-link with-sub">
-            <i class="fa fa-shopping-basket tx-20"></i>
-            <span class="menu-item-label">Caisse</span>
-          </a><!-- br-menu-link -->
-          <ul class="br-menu-sub">
-            
-            <li class="sub-item">
-                <%= link_to  "Commandes", orders_path, class: "sub-link #{current? "active", fidelity_cards_path}" %>
-            </li>
 
-           
-             
-          </ul>
-        </li>
+         <li class="br-menu-item">
+          <%= link_to  raw('<i class="fa fa-money tx-20"></i> <span class="menu-item-label">Revenus</span>'), incomes_path, class: "br-menu-link #{current? "active", incomes_path}" %>
+        </li><!-- br-menu-item -->
 
         <li class="br-menu-item">
-          <a href="#" class="br-menu-link with-sub">
-            <i class="fa fa-id-card-o tx-20"></i>
-            <span class="menu-item-label">Cartes de fidélité</span>
-          </a><!-- br-menu-link -->
-          <ul class="br-menu-sub">
-            
-            <li class="sub-item">
-                <%= link_to  "Cartes", fidelity_cards_path, class: "sub-link #{current? "active", fidelity_cards_path}" %>
-            </li>
-
-            <li class="sub-item">
-                <%= link_to  "Attributions", customer_fidelity_cards_path, class: "sub-link #{current? "active", customer_fidelity_cards_path}" %>
-            </li>
-
-            <li class="sub-item">
-                <%= link_to  "Recharges", recharge_fidelity_cards_path, class: "sub-link #{current? "active", recharge_fidelity_cards_path}" %>
-            </li>
-             
-          </ul>
-        </li>
-
-        <% if !shop_tenant? %>
-          <li class="br-menu-item">
-            <a href="#" class="br-menu-link with-sub">
-              <i class="fa fa-cutlery tx-20"></i>
-              <span class="menu-item-label">Plats</span>
-            </a><!-- br-menu-link -->
-            <ul class="br-menu-sub">
-              
-              <li class="sub-item">
-                  <%= link_to  "Catégories", food_categories_path, class: "sub-link #{current? "active", food_categories_path}" %>
-              </li>
-
-              <li class="sub-item">
-                  <%= link_to  "Plats", foods_path, class: "sub-link #{current? "active", foods_path}" %>
-              </li>
-
-              <li class="sub-item">
-                <%= link_to  "Invendus", unsold_foods_path, class: "sub-link #{current? "active", unsold_foods_path}" %>
-              </li>
-
-              <li class="sub-item">
-                <%= link_to  "Bonus", gifts_path, class: "sub-link #{current? "active", gifts_path}" %>
-              </li>
-               
-            </ul>
-          </li>
-        <% end %>
-
-        
+          <%= link_to  raw('<i class="fa fa-shopping-cart tx-20"></i> <span class="menu-item-label">Dépenses</span>'), expenses_path, class: "br-menu-link #{current? "active", expenses_path}" %>
+        </li><!-- br-menu-item -->
 
         <li class="br-menu-item">
-          <a href="#" class="br-menu-link with-sub">
-            <i class="fa fa-cubes tx-20"></i>
-            <span class="menu-item-label">Produits</span>
-          </a><!-- br-menu-link -->
-          <ul class="br-menu-sub">
-            <li class="sub-item">
-                <%= link_to  "Catégories de produit", product_categories_path, class: "sub-link #{current? "active", product_categories_path}" %>
-            </li>
-
-            
-            <li class="sub-item">
-                <%= link_to  "Produits", products_path, class: "sub-link #{current? "active", products_path}" %>
-            </li>
-             <li class="sub-item">
-                <%= link_to  "Entrées stock", stock_entries_path, class: "sub-link #{current? "active", stock_entries_path}" %>
-            </li>
-
-            <li class="sub-item">
-                <%= link_to  "Sorties stock", stock_exits_path, class: "sub-link #{current? "active", stock_exits_path}" %>
-            </li>
-          </ul>
-        </li>
-
-         
-
-
-        
+          <%= link_to  raw('<i class="fa fa-university tx-20"></i> <span class="menu-item-label">Epargnes</span>'), savings_path, class: "br-menu-link #{current? "active", savings_path}" %>
+        </li><!-- br-menu-item -->
 
         <li class="br-menu-item">
-          <a href="#" class="br-menu-link with-sub">
-            <i class="fa fa-users tx-20"></i>
-            <span class="menu-item-label">Tierces</span>
-          </a><!-- br-menu-link -->
-          <ul class="br-menu-sub">
-            
-            <li class="sub-item">
-                <%= link_to  "Clients", customers_path, class: "sub-link #{current? "active", customers_path}" %>
-            </li>
-             <li class="sub-item">
-                <%= link_to  "Fournisseurs",providers_path, class: "sub-link #{current? "active", providers_path}" %>
-            </li>
+          <%= link_to  raw('<i class="fa fa-credit-card tx-20"></i> <span class="menu-item-label">Dettes</span>'), debts_path, class: "br-menu-link #{current? "active", debts_path}" %>
+        </li><!-- br-menu-item -->
 
-            <li class="sub-item">
-                <%= link_to  "Partenaires",partners_path, class: "sub-link #{current? "active", partners_path}" %>
-            </li>
+        <li class="br-menu-item">
+          <%= link_to  raw('<i class="fa fa-address-book-o tx-20"></i> <span class="menu-item-label">Contacts</span>'), contacts_path, class: "br-menu-link #{current? "active", contacts_path}" %>
+        </li><!-- br-menu-item -->
 
-            
-          </ul>
-        </li>
+
+    
 
 
         <li class="br-menu-item">
@@ -136,17 +39,14 @@
           <ul class="br-menu-sub">
             
             <li class="sub-item">
-                <%= link_to  "Commandes", search_orders_path, class: "sub-link #{current? "active", search_orders_path}" %>
+                <%= link_to  "Commandes", root_path, class: "sub-link #{current? "active", root_path}" %>
             </li>
              
           </ul>
         </li>
 
 
-        <li class="br-menu-item">
-          <%= link_to  raw('<i class="fa fa-list-alt tx-20"></i> <span class="menu-item-label">Fiches techniques</span>'), technical_sheets_path, class: "br-menu-link #{current? "active", technical_sheets_path}" %>
-        </li>
-        
+    
          
 
 
@@ -169,36 +69,36 @@
             </li>
 
             <li class="sub-item">
-                <%= link_to  "Utilisateurs", all_accounts_path, class: "sub-link #{current? "active", all_accounts_path}" %>
+                <%= link_to  "Utilisateurs", all_users_path, class: "sub-link #{current? "active", all_users_path}" %>
             </li>
 
             <li class="sub-item">
-                <%= link_to  "Unités", unities_path, class: "sub-link #{current? "active", unities_path}" %>
+                <%= link_to  "Banques", banks_path, class: "sub-link #{current? "active", banks_path}" %>
+            </li>
+            <li class="sub-item">
+                <%= link_to  "Portefeuilles", wallets_path, class: "sub-link #{current? "active", wallets_path}" %>
             </li>
 
             <li class="sub-item">
-                <%= link_to  "Tables", tables_path, class: "sub-link #{current? "active", tables_path}" %>
+                <%= link_to  "Types revenus", income_types_path, class: "sub-link #{current? "active", income_types_path}" %>
             </li>
 
             <li class="sub-item">
-                <%= link_to  "Clients & Remises", customer_discounts_path, class: "sub-link #{current? "active", tables_path}" %>
+                <%= link_to  "Types dépenses", expense_categories_path, class: "sub-link #{current? "active", expense_categories_path}" %>
             </li>
 
             <li class="sub-item">
-                <%= link_to  "Gestes commerciaux", customer_social_cases_path, class: "sub-link #{current? "active", customer_social_cases_path}" %>
+                <%= link_to  "Types dettes", debt_types_path, class: "sub-link #{current? "active", debt_types_path}" %>
+            </li>
+            <li class="sub-item">
+                <%= link_to  "Types contacts", contact_types_path, class: "sub-link #{current? "active", contact_types_path}" %>
             </li>
 
-           
-           
+            <li class="sub-item">
+                <%= link_to  "Priorités", priorities_path, class: "sub-link #{current? "active", priorities_path}" %>
+            </li>
 
-             
-
-           
           
-
-
-          
-
 
 
           </ul>
@@ -215,11 +115,11 @@
         
 
             <li class="sub-item">
-                <%= link_to  "Backup", show_backup_path,  data: { turbolinks: false }, class: "sub-link" %>
+                <%= link_to  "Backup", root_path,  data: { turbolinks: false }, class: "sub-link" %>
             </li>
 
             <li class="sub-item">
-                <%= link_to  "Logger", activity_logs_path, class: "sub-link #{current? "active", activity_logs_path}" %>
+                <%= link_to  "Logger", root_path, class: "sub-link #{current? "active", root_path}" %>
             </li>
 
 

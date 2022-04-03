@@ -1,4 +1,7 @@
 class PrioritiesController < ApplicationController
+  before_action :authenticate_user!
+  layout "dashboard"
+
   before_action :set_priority, only: %i[ show edit update destroy ]
 
   # GET /priorities or /priorities.json
@@ -21,15 +24,18 @@ class PrioritiesController < ApplicationController
 
   # POST /priorities or /priorities.json
   def create
-    @priority = Priority.new(priority_params)
+    @priority = current_user.priorities.build(priority_params)
 
     respond_to do |format|
       if @priority.save
+        @priorities = Priority.all
         format.html { redirect_to priority_url(@priority), notice: "Priority was successfully created." }
         format.json { render :show, status: :created, location: @priority }
+        format.js
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @priority.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -38,14 +44,21 @@ class PrioritiesController < ApplicationController
   def update
     respond_to do |format|
       if @priority.update(priority_params)
+        @priorities = Priority.all
         format.html { redirect_to priority_url(@priority), notice: "Priority was successfully updated." }
         format.json { render :show, status: :ok, location: @priority }
+        format.js
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @priority.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
+
+   def delete
+      @priority = Priority.find_by(uid: params[:priority_id])
+    end
 
   # DELETE /priorities/1 or /priorities/1.json
   def destroy
@@ -60,11 +73,11 @@ class PrioritiesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_priority
-      @priority = Priority.find(params[:id])
+      @priority = Priority.find_by(uid: params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def priority_params
-      params.require(:priority).permit(:uid, :name, :status, :user_id)
+      params.require(:priority).permit(:name)
     end
 end

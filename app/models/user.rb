@@ -5,10 +5,7 @@
 #  id                     :bigint           not null, primary key
 #  uid                    :string
 #  login                  :string
-#  slug                   :string
 #  role_id                :bigint           not null
-#  created_by             :integer
-#  status                 :string
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  reset_password_token   :string
@@ -36,23 +33,26 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+ 
 
-
-
-
-
-        
-
-  before_save :generate_random_number_uid, :set_default_status
-  before_save :set_role
+  before_save :generate_random_number_uid
+  
   
   # Relationships
   belongs_to :role
   has_one  :profile, dependent: :destroy
-  has_many :poll_categories, dependent: :destroy
-  has_many :polls, dependent: :destroy
-  has_many :comments, dependent: :destroy
-  has_many :votings, dependent: :destroy
+  has_many :banks, dependent: :destroy
+  has_many :wallets, dependent: :destroy
+  has_many :incomes, dependent: :destroy
+  has_many :income_types, dependent: :destroy
+  has_many :debt_types, dependent: :destroy
+  has_many :contact_types, dependent: :destroy
+  has_many :debts, dependent: :destroy
+  has_many :expense_categories, dependent: :destroy
+  has_many :expenses, dependent: :destroy
+  has_many :savings, dependent: :destroy
+  has_many :priorities, dependent: :destroy
+
 
 
 
@@ -64,7 +64,11 @@ class User < ApplicationRecord
 
   #validates :login, presence: true, uniqueness: true
 
-
+  # Change default params ID to uid
+  def to_param
+    uid
+  end
+  
 def set_role
     unless self.role.present?
        self.role = Role.find_by(name: "user").name

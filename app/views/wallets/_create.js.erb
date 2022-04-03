@@ -1,0 +1,11 @@
+$("ul.errors").html("");
+<% if @wallet.errors.any? %>
+  <% @wallet.errors.full_messages.each do |message| %>
+ 
+    $("ul.errors").append($('<div class="c-alert c-alert--danger" > ').html("<%= message.html_safe %> "));
+  <% end %>
+<% else %>
+  $(".wallets").html("<%= escape_javascript(render 'index') %>");
+  $("#wallet-modal").modal("hide");
+ 
+<% end %>

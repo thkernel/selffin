@@ -1,35 +1,42 @@
-<p id="notice"><%= notice %></p>
+<div class="br-pageheader mg-30">
+      <nav class="breadcrumb pd-0 mg-0 tx-12">
+        
+        <span class="breadcrumb-item active"><h5>Portefeuilles</h5></span>
+      </nav>
+    </div><!-- br-pageheader -->
 
-<h1>Wallets</h1>
+<div class="br-pagebody mg-b-30">
+  <div class="br-section-wrapper">
+    <div class="headers mg-b-20">
+        <div class="left-content">
+        </div>
 
-<table>
+        <div class="text-right">
+            <%= link_to raw('<i class="fa fa-plus" aria-hidden="true"></i> Ajouter'), new_wallet_path, class: "btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1", remote: true %>
+
+        </div>
+
+    </div>
+
+
+<table id="datatable1" class="table display responsive nowrap">
+
+
   <thead>
     <tr>
-      <th>Uid</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Status</th>
-      <th>User</th>
-      <th colspan="3"></th>
+     
+      <th>Nom</th>
+      
+      <th>Statut</th>
+      
+      <th>Actions</th>
     </tr>
   </thead>
 
-  <tbody>
-    <% @wallets.each do |wallet| %>
-      <tr>
-        <td><%= wallet.uid %></td>
-        <td><%= wallet.name %></td>
-        <td><%= wallet.description %></td>
-        <td><%= wallet.status %></td>
-        <td><%= wallet.user %></td>
-        <td><%= link_to 'Show', wallet %></td>
-        <td><%= link_to 'Edit', edit_wallet_path(wallet) %></td>
-        <td><%= link_to 'Destroy', wallet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <tbody class="wallets">
+    <%= render "index" %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Wallet', new_wallet_path %>
+</div>
+</div>
+<div id="wallet-modal" class="c-modal modal fade" data-backdrop="static"></div>

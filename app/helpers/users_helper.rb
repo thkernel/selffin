@@ -17,7 +17,7 @@ module UsersHelper
 	
 
     def thumb_avatar(width)
-		profile = current_account.accountable
+		profile = current_user.profile
 		
         if profile && profile.avatar.attached?
             image_tag profile.avatar,  class: "wd-#{width} rounded-circle", alt: "Avatar"
