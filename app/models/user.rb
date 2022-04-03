@@ -47,6 +47,7 @@ class User < ApplicationRecord
   has_many :income_types, dependent: :destroy
   has_many :debt_types, dependent: :destroy
   has_many :contact_types, dependent: :destroy
+  has_many :contacts, dependent: :destroy
   has_many :debts, dependent: :destroy
   has_many :expense_categories, dependent: :destroy
   has_many :expenses, dependent: :destroy

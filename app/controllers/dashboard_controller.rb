@@ -8,10 +8,10 @@ class DashboardController < ApplicationController
 	def index
 
 		
-		#@total_foods = Food.count
-		#@total_customers = Customer.count
-		#@total_fidelity_cards = FidelityCard.count
-		#@total_orders = Order.count
+		@total_incomes = Income.count
+		@total_expenses = Expense.count
+		@total_savings = Saving.count
+		@total_debts = Debt.count
 
 		#@orders = Order.take(10)
 

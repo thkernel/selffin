@@ -5,6 +5,7 @@
 #  id              :bigint           not null, primary key
 #  uid             :string
 #  contact_type_id :bigint
+#  company_name    :string
 #  first_name      :string
 #  last_name       :string
 #  civility        :string
@@ -16,6 +17,7 @@
 #  email           :string
 #  about           :string
 #  status          :string
+#  user_id         :bigint
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #

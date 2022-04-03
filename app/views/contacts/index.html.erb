@@ -1,51 +1,43 @@
-<p id="notice"><%= notice %></p>
+<div class="br-pageheader mg-30">
+      <nav class="breadcrumb pd-0 mg-0 tx-12">
+        
+        <span class="breadcrumb-item active"><h5>Contacts</h5></span>
+      </nav>
+  </div><!-- br-pageheader -->
+<div class="br-pagebody mg-b-30">
+  <div class="br-section-wrapper">
+<div class="headers mg-b-20">
+    <div class="left-content">
+    </div>
 
-<h1>Contacts</h1>
+    <div class="text-right">
+        <%= link_to raw('<i class="fa fa-plus" aria-hidden="true"></i> Ajouter'), new_contact_path, class: "btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1", remote: true %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Uid</th>
-      <th>Contact type</th>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Civility</th>
-      <th>Address</th>
-      <th>Phone number 1</th>
-      <th>Phone number 2</th>
-      <th>City</th>
-      <th>Contry</th>
-      <th>Email</th>
-      <th>About</th>
-      <th>Status</th>
-      <th colspan="3"></th>
+    </div>
+
+</div>
+
+
+<table id="datatable1" class="table display responsive nowrap">
+  
+  <thead class="c-table__head c-table__head--slim">
+    <tr class="c-table__row">
+      <th>Raison sociale</th>
+      <th>Prénom</th>
+      <th>Nom</th>
+      <th>Civilité</th>
+      <th>Ville</th>
+      <th>Pays</th>
+      <th>Téléphone</th>
+      <th>Actions</th>
     </tr>
   </thead>
 
-  <tbody>
-    <% @contacts.each do |contact| %>
-      <tr>
-        <td><%= contact.uid %></td>
-        <td><%= contact.contact_type %></td>
-        <td><%= contact.first_name %></td>
-        <td><%= contact.last_name %></td>
-        <td><%= contact.civility %></td>
-        <td><%= contact.address %></td>
-        <td><%= contact.phone_number_1 %></td>
-        <td><%= contact.phone_number_2 %></td>
-        <td><%= contact.city %></td>
-        <td><%= contact.contry %></td>
-        <td><%= contact.email %></td>
-        <td><%= contact.about %></td>
-        <td><%= contact.status %></td>
-        <td><%= link_to 'Show', contact %></td>
-        <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
-        <td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <tbody class="contacts">
+    <%= render 'index' %>
   </tbody>
 </table>
+</div>
+</div>
+<div id="contact-modal" class="c-modal modal fade" data-backdrop="static"></div>
 
-<br>
-
-<%= link_to 'New Contact', new_contact_path %>

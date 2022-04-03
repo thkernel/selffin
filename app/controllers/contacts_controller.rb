@@ -1,4 +1,7 @@
 class ContactsController < ApplicationController
+  before_action :authenticate_user!
+  layout "dashboard"
+
   before_action :set_contact, only: %i[ show edit update destroy ]
 
   # GET /contacts or /contacts.json
@@ -12,24 +15,31 @@ class ContactsController < ApplicationController
 
   # GET /contacts/new
   def new
+    @contact_types = ContactType.all
     @contact = Contact.new
   end
 
   # GET /contacts/1/edit
   def edit
+    @contact_types = ContactType.all
   end
 
   # POST /contacts or /contacts.json
   def create
-    @contact = Contact.new(contact_params)
+    @contact = current_user.contacts.build(contact_params)
 
     respond_to do |format|
       if @contact.save
+        @contacts = Contact.all
         format.html { redirect_to contact_url(@contact), notice: "Contact was successfully created." }
         format.json { render :show, status: :created, location: @contact }
+        format.js
       else
+        
+        @contact_types = ContactType.all
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @contact.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -47,6 +57,10 @@ class ContactsController < ApplicationController
     end
   end
 
+  def delete
+    @contact = Contact.find_by(uid: params[:contact_id])
+  end
+
   # DELETE /contacts/1 or /contacts/1.json
   def destroy
     @contact.destroy
@@ -60,11 +74,11 @@ class ContactsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_contact
-      @contact = Contact.find(params[:id])
+      @contact = Contact.find_by(uid: params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def contact_params
-      params.require(:contact).permit(:uid, :contact_type_id, :first_name, :last_name, :civility, :address, :phone_number_1, :phone_number_2, :city, :contry, :email, :about, :status)
+      params.require(:contact).permit(:company_name, :contact_type_id, :first_name, :last_name, :civility, :address, :phone_number_1, :phone_number_2, :city, :contry, :email, :about, :status)
     end
 end

@@ -4,6 +4,7 @@
 #
 #  id                  :bigint           not null, primary key
 #  uid                 :string
+#  expense_date        :datetime
 #  expense_category_id :bigint
 #  designation         :string
 #  is_recipient        :boolean

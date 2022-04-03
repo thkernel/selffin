@@ -4,6 +4,7 @@
 #
 #  id                  :bigint           not null, primary key
 #  uid                 :string
+#  expense_date        :datetime
 #  expense_category_id :bigint
 #  designation         :string
 #  is_recipient        :boolean
@@ -23,9 +24,10 @@ class Expense < ApplicationRecord
 	before_save :generate_random_number_uid
 	
   belongs_to :expense_category
-  belongs_to :wallet
-  belongs_to :bank
+ 
   belongs_to :user
+
+  belongs_to :recipient, :foreign_key => "recipient_id", :class_name => "Contact", optional: true
 
   # Change default params ID to uid
 	def to_param

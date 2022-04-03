@@ -2,6 +2,7 @@ class CreateExpenses < ActiveRecord::Migration[5.2]
   def change
     create_table :expenses do |t|
       t.string :uid
+      t.datetime :expense_date
       t.references :expense_category, foreign_key: true
       t.string :designation
       t.boolean :is_recipient

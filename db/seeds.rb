@@ -178,8 +178,57 @@ unless Priority.all.present?
         }
     
     ])
+else
+    priorities = Priority.all
 
 end
 
+unless ExpenseCategory.all.present?
+    expense_categories = ExpenseCategory.create([
+        {
+            name: "Loyer",
+            user_id: User.find_by(login: "superuser").id,
+            priority_id: priorities.first.id
+            
+        },
+        {
+            name: "Transport",
+            user_id: User.find_by(login: "superuser").id,
+            priority_id: priorities.first.id
+        },
+        {
+            name: "Nourriture",
+            user_id: User.find_by(login: "superuser").id,
+            priority_id: priorities.first.id
+        },
+        {
+            name: "Electricité  et Eau",
+            user_id: User.find_by(login: "superuser").id,
+            priority_id: priorities.first.id
+        },
+        {
+            name: "Aide et assistance sociale",
+            user_id: User.find_by(login: "superuser").id,
+            priority_id: priorities.first.id
+        },
+        {
+            name: "Communication et Internet",
+            user_id: User.find_by(login: "superuser").id,
+            priority_id: priorities.first.id
+        },
+        {
+            name: "Loisir et diverissement",
+            user_id: User.find_by(login: "superuser").id,
+            priority_id: priorities.first.id
+        },
+        {
+            name: "Formation et Développement personnel",
+            user_id: User.find_by(login: "superuser").id,
+            priority_id: priorities.first.id
+        }
+    
+    ])
+
+end
 
 

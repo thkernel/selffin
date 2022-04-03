@@ -1,7 +1,11 @@
 <%= form_with(model: expense, local: true) do |form| %>
   <% if expense.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(expense.errors.count, "error") %> prohibited this expense from being saved:</h2>
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+        <h4><%= pluralize(expense.errors.count, "erreur") %> a empêchée l'enregistrement de cette commande:</h4>
 
       <ul>
       <% expense.errors.full_messages.each do |message| %>
@@ -11,72 +15,86 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :uid %>
-    <%= form.text_field :uid %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :expense_date, "Date", class: "required" %>
+        <%= form.date_field :expense_date, class: "form-control", required: true %>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group customSelect">
+        <%= form.label :expense_category_id, "Catégorie", class: "required" %>
+        <%= form.collection_select(:expense_category_id, @expense_categories, :id, :name, {prompt: "Sélectionner"}, class: "form-control ", style: "width: 100%", required: true) %> 
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :expense_category_id %>
-    <%= form.text_field :expense_category_id %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= form.label :designation, "Désignation", class: "required" %>
+        <%= form.text_field :designation, class: "form-control", placeholder: "Désignation", required: true %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :reason %>
-    <%= form.text_field :reason %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.check_box :is_recipient %>
+        <%= form.label :is_recipient, "Je suis bénéficiaire" %>
+        
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group customSelect">
+        
+        <%= form.label :recipient_id, "Bénéficiaire" %>
+        <%= form.collection_select(:recipient_id, @contacts, :id, :contact_name, {prompt: "Sélectionner"}, class: "form-control ", style: "width: 100%") %> 
+        
+      </div>
+    </div>
+
   </div>
 
-  <div class="field">
-    <%= form.label :recipient %>
-    <%= form.text_field :recipient %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :document_reference, "Réf. pièce" %>
+        <%= form.text_field :document_reference, class: "form-control", placeholder: "Réf. pièce" %>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :amount, "Montant", class: "required" %>
+        <%= form.number_field :amount, class: "form-control", required: true %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :document_reference %>
-    <%= form.text_field :document_reference %>
+  
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= form.label :description, "Description" %>
+        <%= form.text_area :description, class: "form-control", placeholder: true %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :amount %>
-    <%= form.text_field :amount %>
-  </div>
+  
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
+  
 
-  <div class="field">
-    <%= form.label :wallet_source %>
-    <%= form.check_box :wallet_source %>
-  </div>
-
-  <div class="field">
-    <%= form.label :wallet_id %>
-    <%= form.text_field :wallet_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :bank_source %>
-    <%= form.text_field :bank_source %>
-  </div>
-
-  <div class="field">
-    <%= form.label :bank_id %>
-    <%= form.text_field :bank_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group pull-right">
+        <%= form.submit  class: "btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1" %>
+      </div>
+    </div>
   </div>
 <% end %>
