@@ -117,6 +117,70 @@ unless Feature.all.present?
 
 end
 
+unless DebtType.all.present?
+    debt_types = DebtType.create([
+        {
+            name: "Emprunt",
+            user_id: User.find_by(login: "superuser").id 
+            
+        },
+        {
+            name: "Crédit",
+            user_id: User.find_by(login: "superuser").id
+        }
+    
+    ])
+
+end
+
+unless IncomeType.all.present?
+    income_types = IncomeType.create([
+        {
+            name: "Rémunération",
+            user_id: User.find_by(login: "superuser").id 
+            
+        },
+        {
+            name: "Profit/Bénéfice",
+            user_id: User.find_by(login: "superuser").id
+        },
+        {
+            name: "Profit",
+            user_id: User.find_by(login: "superuser").id
+        }
+    
+    ])
+
+end
+
+unless Priority.all.present?
+    priorities = Priority.create([
+        {
+            name: "Très élevée",
+            user_id: User.find_by(login: "superuser").id 
+            
+        },
+        {
+            name: "Elévée",
+            user_id: User.find_by(login: "superuser").id
+        },
+        {
+            name: "Normale",
+            user_id: User.find_by(login: "superuser").id
+        },
+        {
+            name: "Basse",
+            user_id: User.find_by(login: "superuser").id
+        },
+        {
+            name: "Facultative",
+            user_id: User.find_by(login: "superuser").id
+        }
+    
+    ])
+
+end
+
 
 
 end

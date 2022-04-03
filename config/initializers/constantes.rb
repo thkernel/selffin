@@ -1,5 +1,5 @@
 APPLICATION_NAME = "Selffin"
-APPLICATION_SLOGAN = ""
+APPLICATION_SLOGAN = "Gérer votre finance personnelle"
 APPLICATION_DESCRIPTION = ""
 APPLICATION_KEYWORDS = []
 GENDERS = [["Homme"], ["Femme"]]

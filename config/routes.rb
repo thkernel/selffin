@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   
  
   
+  resources :contacts
+  resources :contact_types
+  resources :debts
+  resources :debt_types
   resources :income_saving_items
   resources :income_savings
   resources :income_expense_items

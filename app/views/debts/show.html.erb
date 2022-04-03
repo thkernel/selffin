@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Uid:</strong>
+  <%= @debt.uid %>
+</p>
+
+<p>
+  <strong>Debt type:</strong>
+  <%= @debt.debt_type %>
+</p>
+
+<p>
+  <strong>Contracted at:</strong>
+  <%= @debt.contracted_at %>
+</p>
+
+<p>
+  <strong>Repayment date:</strong>
+  <%= @debt.repayment_date %>
+</p>
+
+<p>
+  <strong>Reason:</strong>
+  <%= @debt.reason %>
+</p>
+
+<p>
+  <strong>Creditor:</strong>
+  <%= @debt.creditor %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @debt.amount %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @debt.status %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @debt.description %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @debt.user %>
+</p>
+
+<%= link_to 'Edit', edit_debt_path(@debt) %> |
+<%= link_to 'Back', debts_path %>

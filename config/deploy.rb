@@ -4,8 +4,8 @@ lock "~> 3.16.0"
 set :stages, %w(production staging)
 set :default_stage, "production"
 
-set :application, "stlouis"
-set :repo_url, "https://github.com/thkernel/stlouis.git"
+set :application, "selffin"
+set :repo_url, "https://github.com/thkernel/selffin.git"
 #set :ssh_options, { auth_methods: %w(password), password: "AMOSXZIBITDE88" }
 
 # Default branch is :master
@@ -30,9 +30,7 @@ set :repo_url, "https://github.com/thkernel/stlouis.git"
 # Default value for linked_dirs is []
  append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", "public/storage", "storage"
 
- #set :nginx_config_name, "acres"
- #set :nginx_server_name, "acres"
- #set :puma_workers, 1
+
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -41,6 +39,17 @@ set :repo_url, "https://github.com/thkernel/stlouis.git"
 # set :local_user, -> { `git config user.name`.chomp }
 
 #set :default_env, { rvm_bin_path: '~/.rvm/bin' }
+
+set :rbenv_type, :user # or :system, or :fullstaq (for Fullstaq Ruby), depends on your rbenv setup
+set :rbenv_ruby, '2.5.0'
+
+# in case you want to set ruby version from the file:
+# set :rbenv_ruby, File.read('.ruby-version').strip
+
+set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+set :rbenv_map_bins, %w{rake gem bundle ruby rails puma pumactl}
+set :rbenv_roles, :all # default value
+#append :rbenv_map_bins, 'puma', 'pumactl'
 
 
 # Default value for keep_releases is 5
