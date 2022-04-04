@@ -143,10 +143,6 @@ unless IncomeType.all.present?
         {
             name: "Profit/Bénéfice",
             user_id: User.find_by(login: "superuser").id
-        },
-        {
-            name: "Profit",
-            user_id: User.find_by(login: "superuser").id
         }
     
     ])

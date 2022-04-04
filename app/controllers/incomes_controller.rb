@@ -1,4 +1,7 @@
 class IncomesController < ApplicationController
+  before_action :authenticate_user!
+  layout "dashboard"
+
   before_action :set_income, only: %i[ show edit update destroy ]
 
   # GET /incomes or /incomes.json
@@ -12,22 +15,26 @@ class IncomesController < ApplicationController
 
   # GET /incomes/new
   def new
+    @income_types = IncomeType.all
     @income = Income.new
   end
 
   # GET /incomes/1/edit
   def edit
+    @income_types = IncomeType.all
   end
 
   # POST /incomes or /incomes.json
   def create
-    @income = Income.new(income_params)
+    @income = current_user.incomes.build(income_params)
 
     respond_to do |format|
       if @income.save
-        format.html { redirect_to income_url(@income), notice: "Income was successfully created." }
+        @incomes = Income.all
+        format.html { redirect_to incomes_path, notice: "Income was successfully created." }
         format.json { render :show, status: :created, location: @income }
       else
+        @income_types = IncomeType.all
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @income.errors, status: :unprocessable_entity }
       end
@@ -38,13 +45,18 @@ class IncomesController < ApplicationController
   def update
     respond_to do |format|
       if @income.update(income_params)
-        format.html { redirect_to income_url(@income), notice: "Income was successfully updated." }
+        format.html { redirect_to incomes_path, notice: "Income was successfully updated." }
         format.json { render :show, status: :ok, location: @income }
       else
+        @income_types = IncomeType.all
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @income.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def delete
+    @income = Income.find_by(uid: params[:income_id])
   end
 
   # DELETE /incomes/1 or /incomes/1.json
@@ -60,11 +72,11 @@ class IncomesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_income
-      @income = Income.find(params[:id])
+      @income = Income.find_by(uid: params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def income_params
-      params.require(:income).permit(:uid, :income_type_id, :designation, :description, :amount, :wallet_destionation, :wallet_id, :bank_destination, :bank_id, :status, :user_id)
+      params.require(:income).permit(:income_date, :income_type_id, :designation, :description, :amount, :status)
     end
 end
