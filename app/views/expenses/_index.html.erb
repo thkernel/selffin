@@ -1,7 +1,7 @@
 <% @expenses.each do |expense| %>
   <tr>
     <td><%= expense.created_at.strftime("%d/%m/%Y") %></td>
-    <td><%= expense.uid %></td>
+    
     <td><%= expense.expense_category.name %></td>
     <td><%= expense.designation %></td>
      
@@ -11,7 +11,7 @@
     
     <td><%= expense.status %></td>
     <td>
-                    <div class="action-buttons">
+        <div class="action-buttons">
                     <%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
 '),  edit_expense_path(expense), title: "Modifier", remote: false %>
 

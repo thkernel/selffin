@@ -29,6 +29,7 @@ class Contact < ApplicationRecord
 
   belongs_to :contact_type
   has_many :expenses, :class_name => "Expense", :foreign_key => :recipient_id
+  has_many :debts, :class_name => "Debt", :foreign_key => :creditor_id
 
   # Change default params ID to uid
 	def to_param

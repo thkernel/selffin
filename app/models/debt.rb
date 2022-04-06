@@ -29,6 +29,9 @@ class Debt < ApplicationRecord
   belongs_to :debt_type
   belongs_to :user
 
+  belongs_to :creditor, :foreign_key => "creditor_id", :class_name => "Contact", optional: true
+
+
   # Change default params ID to uid
 	def to_param
 		uid

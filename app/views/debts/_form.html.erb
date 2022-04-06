@@ -1,7 +1,11 @@
 <%= form_with(model: debt, local: true) do |form| %>
   <% if debt.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(debt.errors.count, "error") %> prohibited this debt from being saved:</h2>
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+        <h4><%= pluralize(debt.errors.count, "erreur") %> a empêchée l'enregistrement de cette dette:</h4>
 
       <ul>
       <% debt.errors.full_messages.each do |message| %>
@@ -11,57 +15,79 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :uid %>
-    <%= form.text_field :uid %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :contracted_at, "Contractée le", class: "required" %>
+        <%= form.date_field :contracted_at, class: "form-control"  %>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :repayment_date, "Date rembourssement", class: "required" %>
+        <%= form.date_field :repayment_date, class: "form-control" %>
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <%= form.label :debt_type_id, "Type", class: "required" %>
+        <%= form.collection_select(:debt_type_id, @debt_types, :id, :name, {prompt: "Sélectionner"}, class: "form-control ", style: "width: 100%", required: true) %> 
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <div class="field">
+        <%= form.label :designation, "Désignation", class: "required" %>
+        <%= form.text_field :designation, class: "form-control", placeholder: "Désignation", required: true %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :debt_type_id %>
-    <%= form.text_field :debt_type_id %>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <%= form.check_box :is_creditor %>
+        <%= form.label :is_creditor, "Suis-je le créancier?" %>
+        
+      </div>
+    </div>
+
+    <div class="col-md-5">
+      <div class="form-group">
+        <%= form.label :creditor_id, "Créancier" %>
+        <%= form.collection_select(:creditor_id, @contacts, :id, :contact_name, {prompt: "Sélectionner"}, class: "form-control ", style: "width: 100%") %> 
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="form-group">
+        <%= form.label :amount, "Montant", class: "required" %>
+        <%= form.number_field :amount, class: "form-control", required: true %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :contracted_at %>
-    <%= form.date_select :contracted_at %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= form.label :description, "Description" %>
+        <%= form.text_area :description, class: "form-control", placeholder: "Description" %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :repayment_date %>
-    <%= form.date_select :repayment_date %>
-  </div>
+  
 
-  <div class="field">
-    <%= form.label :reason %>
-    <%= form.text_field :reason %>
-  </div>
-
-  <div class="field">
-    <%= form.label :creditor %>
-    <%= form.text_field :creditor %>
-  </div>
-
-  <div class="field">
-    <%= form.label :amount %>
-    <%= form.text_field :amount %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group pull-right">
+        <%= form.submit  class: "btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1" %>
+      </div>
+    </div>
   </div>
 <% end %>

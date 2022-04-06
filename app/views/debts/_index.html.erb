@@ -1,0 +1,26 @@
+<% @debts.each do |debt| %>
+  <tr>
+    <td><%= debt.created_at.strftime("%d/%m/%Y") %></td>
+    <td><%= debt.debt_type.name %></td>
+    <td><%= debt.contracted_at.strftime("%d/%m/%Y") %></td>
+    <td><%= debt.repayment_date.strftime("%d/%m/%Y") %></td>
+    <td><%= debt.designation %></td>
+    
+    <td><%= debt.creditor %></td>
+    <td><%= debt.amount %></td>
+    <td><%= debt.status %></td>
+   
+    <td>
+        <div class="action-buttons">
+                    <%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'),  edit_debt_path(debt), title: "Modifier", remote: false %>
+
+
+
+
+<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), debt_delete_path(debt), remote: true, title: "Supprimer", class: "delete" %>
+</div>
+</td>
+  </tr>
+<% end %>

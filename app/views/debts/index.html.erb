@@ -1,45 +1,46 @@
-<p id="notice"><%= notice %></p>
+<div class="br-pageheader mg-30">
+      <nav class="breadcrumb pd-0 mg-0 tx-12">
+        
+        <span class="breadcrumb-item active"><h5>Dettes</h5></span>
+      </nav>
+    </div><!-- br-pageheader -->
 
-<h1>Debts</h1>
+<div class="br-pagebody mg-b-30">
+  <div class="br-section-wrapper">
+    <div class="headers mg-b-20">
+        <div class="left-content">
+        </div>
 
-<table>
+        <div class="text-right">
+            <%= link_to raw('<i class="fa fa-plus" aria-hidden="true"></i> Ajouter'), new_debt_path, class: "btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1", remote: false %>
+
+        </div>
+
+    </div>
+
+
+<table id="datatable1" class="table display responsive nowrap">
+
+
   <thead>
     <tr>
-      <th>Uid</th>
-      <th>Debt type</th>
-      <th>Contracted at</th>
-      <th>Repayment date</th>
-      <th>Reason</th>
-      <th>Creditor</th>
-      <th>Amount</th>
-      <th>Status</th>
-      <th>Description</th>
-      <th>User</th>
-      <th colspan="3"></th>
+      <th>Date</th>
+      <th>Type</th>
+      <th>Contractée le</th>
+      <th>Date rembours.</th>
+      <th>Désignation</th>
+      <th>Créancier</th>
+      <th>Montant</th>
+      <th>Statut</th>
+     
+      <th>Actions</th>
     </tr>
   </thead>
 
-  <tbody>
-    <% @debts.each do |debt| %>
-      <tr>
-        <td><%= debt.uid %></td>
-        <td><%= debt.debt_type %></td>
-        <td><%= debt.contracted_at %></td>
-        <td><%= debt.repayment_date %></td>
-        <td><%= debt.reason %></td>
-        <td><%= debt.creditor %></td>
-        <td><%= debt.amount %></td>
-        <td><%= debt.status %></td>
-        <td><%= debt.description %></td>
-        <td><%= debt.user %></td>
-        <td><%= link_to 'Show', debt %></td>
-        <td><%= link_to 'Edit', edit_debt_path(debt) %></td>
-        <td><%= link_to 'Destroy', debt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <tbody class="debts">
+    <%= render "index" %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Debt', new_debt_path %>
+</div>
+</div>
+<div id="debt-modal" class="c-modal modal fade" data-backdrop="static"></div>
