@@ -17,8 +17,9 @@
 class Saving < ApplicationRecord
   include SharedUtils::Generate
 	
-	before_save :generate_random_number_uid
-	
+  before_save :generate_random_number_uid
+  after_save :update_bank_balance
+  
   belongs_to :bank
   belongs_to :user
 
@@ -27,5 +28,18 @@ class Saving < ApplicationRecord
 		uid
 	end
 
-	
+
+	def update_bank_balance
+      puts "SUBTOTAL: #{subtotal}"
+      
+      saving_amount = self[:amount].to_f
+      bank = Bank.find(self[:bank_id])
+
+      if bank.present?
+      	bank_current_balance = bank.balance.to_f
+      	bank_new_balance = bank_current_balance + saving_amount
+      	bank.update_column(:balance, bank_new_balance)
+        
+      end
+    end
 end

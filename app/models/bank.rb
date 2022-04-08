@@ -20,7 +20,7 @@
 class Bank < ApplicationRecord
 	include SharedUtils::Generate
 	
-	before_save :generate_random_number_uid
+	before_save :generate_random_number_uid, :set_status
 
 	belongs_to :user
 
@@ -29,6 +29,13 @@ class Bank < ApplicationRecord
   	# Change default params ID to uid
 	def to_param
 		uid
+	end
+
+	private
+	def set_status
+		unless self.status.present?
+			self.status = "Actif"
+		end
 	end
 
 end

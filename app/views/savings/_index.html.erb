@@ -1,0 +1,22 @@
+<% @savings.each do |saving| %>
+  <tr>
+    td><%= saving.created_at.strftime("%d/%m/%Y") %></td>
+    <td><%= saving.designation %></td>
+    <td><%= saving.bank.name %></td>
+    
+    <td><%= saving.amount %></td>
+    <td><%= saving.status %></td>
+    <td>
+        <div class="action-buttons">
+            <%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'),  edit_saving_path(saving), title: "Modifier", remote: true %>
+
+
+
+
+<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), saving_delete_path(saving), remote: true, title: "Supprimer", class: "delete" %>
+</div>
+</td>
+  </tr>
+<% end %>

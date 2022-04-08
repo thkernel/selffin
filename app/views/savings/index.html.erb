@@ -1,39 +1,42 @@
-<p id="notice"><%= notice %></p>
+<div class="br-pageheader mg-30">
+      <nav class="breadcrumb pd-0 mg-0 tx-12">
+        
+        <span class="breadcrumb-item active"><h5>Epargnes</h5></span>
+      </nav>
+    </div><!-- br-pageheader -->
 
-<h1>Savings</h1>
+<div class="br-pagebody mg-b-30">
+  <div class="br-section-wrapper">
+    <div class="headers mg-b-20">
+        <div class="left-content">
+        </div>
 
-<table>
+        <div class="text-right">
+            <%= link_to raw('<i class="fa fa-plus" aria-hidden="true"></i> Ajouter'), new_saving_path, class: "btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1", remote: false %>
+
+        </div>
+
+    </div>
+
+
+<table id="datatable1" class="table display responsive nowrap">
+
+
   <thead>
     <tr>
-      <th>Uid</th>
-      <th>Designation</th>
-      <th>Bank</th>
-      <th>Description</th>
-      <th>Amount</th>
-      <th>Status</th>
-      <th>User</th>
-      <th colspan="3"></th>
+      <th>Date</th>
+      <th>Désignation</th>
+      <th>Banque</th>
+      <th>Montant</th>
+      <th>Statut</th>
+      <th>Actions</th>
     </tr>
   </thead>
 
-  <tbody>
-    <% @savings.each do |saving| %>
-      <tr>
-        <td><%= saving.uid %></td>
-        <td><%= saving.designation %></td>
-        <td><%= saving.bank %></td>
-        <td><%= saving.description %></td>
-        <td><%= saving.amount %></td>
-        <td><%= saving.status %></td>
-        <td><%= saving.user %></td>
-        <td><%= link_to 'Show', saving %></td>
-        <td><%= link_to 'Edit', edit_saving_path(saving) %></td>
-        <td><%= link_to 'Destroy', saving, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <tbody class="savings">
+    <%= render "index" %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Saving', new_saving_path %>
+</div>
+</div>
+<div id="saving-modal" class="c-modal modal fade" data-backdrop="static"></div>
