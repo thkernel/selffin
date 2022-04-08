@@ -72,7 +72,7 @@ class User < ApplicationRecord
   
 def set_role
     unless self.role.present?
-       self.role = Role.find_by(name: "user").name
+       self.role = Role.find_by(name: "User").name
               
        puts "ROLE: #{self.role}"
     end
@@ -80,7 +80,7 @@ def set_role
 
 
   def superuser?
-    if self.role.name == "superuser"
+    if self.role.name == "Superuser"
       true 
     else
       false
@@ -88,7 +88,7 @@ def set_role
   end
 
     def admin?
-      if self.role.name == "administrator"
+      if self.role.name == "Administrator"
         true 
       else
         false
@@ -96,7 +96,7 @@ def set_role
     end
 
     def user?
-    if self.role.name == "user"
+    if self.role.name == "User"
       true 
     else
       false
@@ -104,7 +104,7 @@ def set_role
     end
 
     def guest?
-    if self.role.name == "guest"
+    if self.role.name == "Guest"
       true 
     else
       false

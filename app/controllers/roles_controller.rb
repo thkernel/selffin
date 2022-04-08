@@ -1,5 +1,5 @@
 class RolesController < ApplicationController
-  before_action :authenticate_account!
+  before_action :authenticate_user!
   layout "dashboard"
 
   

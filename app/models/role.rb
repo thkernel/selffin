@@ -16,6 +16,11 @@ class Role < ApplicationRecord
 	
 	before_save :generate_random_number_uid
 	
+	has_many :ausers, dependent: :destroy 
+    has_many :permissions, dependent: :destroy
+
+    validates :name, presence: true, uniqueness: true
+
 	# Change default params ID to uid
 	def to_param
 		uid
